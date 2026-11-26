@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://lin3jtlwmnov"]
+
+[ext_resource type="Script" uid="uid://deopsq3nb8ri6" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="main_menu" type="Control" unique_id=1875952928]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_l6cm7")

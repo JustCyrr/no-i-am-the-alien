@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://bhgfedsoirude"]
+
+[ext_resource type="PackedScene" uid="uid://cofealomsjecy" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/doctor_scalpel.tscn" id="2_choun"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/doctor_hammer.tscn" id="3_ya4ey"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/doctor_saw.tscn" id="4_eb6dy"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/police_baton.tscn" id="5_trceg"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/police_shield.tscn" id="6_a8y0u"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/police_pistol.tscn" id="7_jkv2x"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/soldier_rifle.tscn" id="8_jbj1t"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/soldier_bazooka.tscn" id="9_muem4"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/soldier_booster.tscn" id="10_dp3eg"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/medkit.tscn" id="11_trceg"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/speed_boost.tscn" id="12_a8y0u"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/shield_boost.tscn" id="13_jkv2x"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/pistol.tscn" id="14_jkv2x"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/shotgun.tscn" id="15_jbj1t"]
+
+[sub_resource type="Environment" id="Environment_sgp6g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5qli"]
+size = Vector3(24, 1, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
+size = Vector3(24, 1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sugp2"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tbgi4"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tefeu"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6xl0"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tipki"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
+size = Vector3(6, 0.4, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_choun"]
+size = Vector3(6, 0.4, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trceg"]
+size = Vector3(1.5, 11, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8y0u"]
+size = Vector3(1.5, 11, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkv2x"]
+size = Vector3(1.5, 11, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbj1t"]
+size = Vector3(1.5, 11, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_muem4"]
+size = Vector3(21.5, 1, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dp3eg"]
+size = Vector3(21.5, 1, 1.5)
+
+[node name="main" type="Node3D" unique_id=1350940083]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1688795145]
+environment = SubResource("Environment_sgp6g")
+
+[node name="SunLight" type="DirectionalLight3D" parent="." unique_id=1939959134]
+transform = Transform3D(0.81915206, -0.4055798, 0.4055798, 0, 0.70710677, 0.70710677, -0.57357645, -0.579228, 0.579228, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1316730570]
+
+[node name="MainFloor" type="StaticBody3D" parent="Platforms" unique_id=221277654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/MainFloor" unique_id=419005793]
+mesh = SubResource("BoxMesh_o5qli")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/MainFloor" unique_id=1322754326]
+shape = SubResource("BoxShape3D_0wfyh")
+
+[node name="StepLow" type="StaticBody3D" parent="Platforms" unique_id=1230258447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -3)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StepLow" unique_id=171759050]
+mesh = SubResource("BoxMesh_sugp2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StepLow" unique_id=1230473778]
+shape = SubResource("BoxShape3D_jyhfs")
+
+[node name="StepMid" type="StaticBody3D" parent="Platforms" unique_id=2121054110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StepMid" unique_id=407876947]
+mesh = SubResource("BoxMesh_tbgi4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StepMid" unique_id=1917982693]
+shape = SubResource("BoxShape3D_tefeu")
+
+[node name="StepHigh" type="StaticBody3D" parent="Platforms" unique_id=1715501254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -3)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StepHigh" unique_id=2079200736]
+mesh = SubResource("BoxMesh_o6xl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StepHigh" unique_id=794721055]
+shape = SubResource("BoxShape3D_tipki")
+
+[node name="RampTest" type="StaticBody3D" parent="Platforms" unique_id=2018685482]
+transform = Transform3D(0.9396926, -0.34202012, 0, 0.34202012, 0.9396926, 0, 0, 0, 1, 6, 0.6, 3)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/RampTest" unique_id=1761555637]
+mesh = SubResource("BoxMesh_85g3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/RampTest" unique_id=1628663994]
+shape = SubResource("BoxShape3D_choun")
+
+[node name="SwingTowerLeft" type="StaticBody3D" parent="Platforms" unique_id=872086149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5.5, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/SwingTowerLeft" unique_id=294586232]
+mesh = SubResource("BoxMesh_trceg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/SwingTowerLeft" unique_id=1657646421]
+shape = SubResource("BoxShape3D_a8y0u")
+
+[node name="SwingTowerRight" type="StaticBody3D" parent="Platforms" unique_id=2114600456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5.5, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/SwingTowerRight" unique_id=463680162]
+mesh = SubResource("BoxMesh_jkv2x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/SwingTowerRight" unique_id=2089007553]
+shape = SubResource("BoxShape3D_jbj1t")
+
+[node name="OverheadBridge" type="StaticBody3D" parent="Platforms" unique_id=874159562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/OverheadBridge" unique_id=993115451]
+mesh = SubResource("BoxMesh_muem4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/OverheadBridge" unique_id=639389750]
+shape = SubResource("BoxShape3D_dp3eg")
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=871853026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8.5)
+
+[node name="TestCamera" type="Camera3D" parent="." unique_id=66742723]
+transform = Transform3D(1, 0, 0, 0, 0.92718387, 0.3746066, 0, -0.3746066, 0.92718387, 0, 6, 12)
+
+[node name="Player" parent="." unique_id=633442737 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 8.5)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1320590543]
+
+[node name="DoctorScalpel" parent="Enemies" unique_id=805727612 instance=ExtResource("2_choun")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.495139, 0.05, -1.9980264)
+
+[node name="DoctorHammer" parent="Enemies" unique_id=1275812831 instance=ExtResource("3_ya4ey")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.5, 0.05, -5.5)
+
+[node name="DoctorSaw" parent="Enemies" unique_id=1762029624 instance=ExtResource("4_eb6dy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.5, 0.05, -7)
+
+[node name="PoliceBaton" parent="Enemies" unique_id=1398483773 instance=ExtResource("5_trceg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.2, 0.05, -8.5)
+
+[node name="PoliceShield" parent="Enemies" unique_id=938489608 instance=ExtResource("6_a8y0u")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.05, -8)
+
+[node name="PolicePistol" parent="Enemies" unique_id=1663850929 instance=ExtResource("7_jkv2x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.2, 0.05, -9.5)
+
+[node name="SoldierRifle" parent="Enemies" unique_id=1959259458 instance=ExtResource("8_jbj1t")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7, 0.05, -4.5)
+
+[node name="SoldierBazooka" parent="Enemies" unique_id=251273504 instance=ExtResource("9_muem4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.5, 0.05, -7.5)
+
+[node name="SoldierBooster" parent="Enemies" unique_id=1430788184 instance=ExtResource("10_dp3eg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0.05, -6)
+
+[node name="Pickups" type="Node3D" parent="." unique_id=1590874623]
+
+[node name="MedkitPickup" parent="Pickups" unique_id=326246440 instance=ExtResource("11_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.05, 4.5)
+
+[node name="SpeedBoostPickup" parent="Pickups" unique_id=381605754 instance=ExtResource("12_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 4.5)
+
+[node name="ShieldBoostPickup" parent="Pickups" unique_id=1027692346 instance=ExtResource("13_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.05, 4.5)
+
+[node name="PistolPickup" parent="Pickups" unique_id=477037852 instance=ExtResource("14_jkv2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.05, 4.5)
+
+[node name="ShotgunPickup" parent="Pickups" unique_id=1130071146 instance=ExtResource("15_jbj1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.05, 4.5)

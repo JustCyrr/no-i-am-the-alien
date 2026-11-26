@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/pickup_3d.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/pickups/medkit/medkit_spin_sheet.png" id="2_tex"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 0.75
+
+[node name="MedkitPickup" type="Area3D"]
+collision_layer = 8
+collision_mask = 1
+monitorable = false
+script = ExtResource("1_script")
+pickup_type = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("SphereShape3D_1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
+pixel_size = 0.02
+billboard = 2
+shaded = false
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_tex")
+hframes = 8

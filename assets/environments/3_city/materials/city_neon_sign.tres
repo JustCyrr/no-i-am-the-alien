@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/v2/alien_neon_hologram.gdshader" id="1_5oya4"]
+[ext_resource type="Texture2D" path="res://assets/environments/3_city/textures/city_neon_sign_albedo.png" id="2_46mxt"]
+[ext_resource type="Texture2D" path="res://assets/environments/3_city/textures/city_neon_sign_emissive.png" id="3_f7051"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5oya4")
+shader_parameter/screen_albedo_tex = ExtResource("2_46mxt")
+shader_parameter/screen_emissive_tex = ExtResource("3_f7051")
+shader_parameter/emission_energy = 2.8
+shader_parameter/scanline_density = null
+shader_parameter/scanline_strength = null
+shader_parameter/scanline_scroll_speed = null
+shader_parameter/chromatic_offset = null
+shader_parameter/flicker_strength = null
+shader_parameter/glitch_intensity = null
+shader_parameter/glitch_rate = null
+shader_parameter/fresnel_boost = null

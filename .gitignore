@@ -1,0 +1,19 @@
+# Godot 4 cache & local editor state
+.godot/
+*.translation
+export_presets.cfg
+
+# Local tooling, AI agents & editor-only plugins (never publish)
+.agents/
+addons/
+builds/
+scenes/stages/_asset_palette_showcase.tscn
+
+# OS & temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.log
+.env
+.env.*

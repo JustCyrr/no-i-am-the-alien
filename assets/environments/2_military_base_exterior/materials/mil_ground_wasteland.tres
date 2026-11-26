@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://xuku4yvtrgb1"]
+
+[ext_resource type="Shader" uid="uid://dv0g0cti1my4" path="res://shaders/v2/ps2_retro_surface.gdshader" id="1_t04wc"]
+[ext_resource type="Texture2D" uid="uid://bocp8mqfupqaa" path="res://assets/environments/2_military_base_exterior/textures/mil_ground_wasteland_albedo.png" id="2_0a0of"]
+[ext_resource type="Texture2D" uid="uid://c2d5kft5ai4wt" path="res://assets/environments/2_military_base_exterior/textures/mil_ground_wasteland_normal.png" id="3_d07au"]
+[ext_resource type="Texture2D" uid="uid://dw7w8mx86rti8" path="res://assets/environments/2_military_base_exterior/textures/mil_ground_wasteland_orm.png" id="4_bqex7"]
+
+[sub_resource type="Image" id="Image_t04wc"]
+data = {
+"data": PackedByteArray(0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_g8kfu"]
+image = SubResource("Image_t04wc")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t04wc")
+shader_parameter/albedo_tex = ExtResource("2_0a0of")
+shader_parameter/normal_tex = ExtResource("3_d07au")
+shader_parameter/orm_tex = ExtResource("4_bqex7")
+shader_parameter/emissive_tex = SubResource("ImageTexture_g8kfu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo_tint = Color(1, 1, 1, 1)
+shader_parameter/normal_depth = 1.15
+shader_parameter/ao_strength = 0.85
+shader_parameter/roughness_mult = 1.0
+shader_parameter/metallic_mult = 1.0
+shader_parameter/emission_energy = 0.0
+shader_parameter/emission_pulse_amp = 0.06
+shader_parameter/emission_pulse_speed = 2.0
+shader_parameter/ground_y = 0.0
+shader_parameter/ground_ao_height = 0.45
+shader_parameter/ground_ao_strength = 0.35
+shader_parameter/ground_grime_tint = Color(0.16, 0.11, 0.08, 1)
+shader_parameter/light_steps = 10.0
+shader_parameter/dither_strength = 0.38
+shader_parameter/rim_strength = 0.18
+shader_parameter/rim_color = Color(0.95, 0.56, 0.3, 1)
+shader_parameter/vertex_snap_enable = false
+shader_parameter/snap_resolution = Vector2(640, 360)

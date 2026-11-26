@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/infinite_world_manager.gd" id="1_ah7rh"]
+[ext_resource type="Script" path="res://scripts/infinite_spawn_director.gd" id="2_ut1qd"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="3_c3jer"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_fl01k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lr15f"]
+sky_top_color = Color(0.035, 0.03, 0.095, 1)
+sky_horizon_color = Color(0.1, 0.055, 0.2, 1)
+ground_bottom_color = Color(0.01925, 0.0165, 0.05225, 1)
+ground_horizon_color = Color(0.075, 0.041249998, 0.15, 1)
+
+[sub_resource type="Sky" id="Sky_s6rvc"]
+sky_material = SubResource("ProceduralSkyMaterial_lr15f")
+
+[sub_resource type="Environment" id="Environment_t81kj"]
+background_mode = 2
+sky = SubResource("Sky_s6rvc")
+ambient_light_source = 2
+ambient_light_color = Color(0.5, 0.44, 0.8, 1)
+ambient_light_energy = 0.66
+tonemap_mode = 3
+glow_enabled = true
+glow_intensity = 0.62
+glow_bloom = 0.18
+glow_hdr_threshold = 0.95
+fog_enabled = true
+fog_light_color = Color(0.047, 0.043, 0.102, 1)
+fog_density = 0.0085
+
+[node name="Stage3City" type="Node3D" unique_id=204315678]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1469600165]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=924467959]
+environment = SubResource("Environment_t81kj")
+
+[node name="SunLight" type="DirectionalLight3D" parent="Environment" unique_id=1359987025]
+transform = Transform3D(0.81915206, 0.41259637, -0.3984397, 0, 0.6946584, 0.7193398, 0.57357645, -0.58924866, 0.5690309, 0, 0, 0)
+light_color = Color(0.74, 0.82, 1, 1)
+light_energy = 0.88
+shadow_enabled = true
+directional_shadow_max_distance = 65.0
+
+[node name="InfiniteWorld" type="Node3D" parent="." unique_id=63799922]
+script = ExtResource("1_ah7rh")
+stage_kind = 2
+world_seed = 3003
+render_radius = 4
+unload_radius = 5
+
+[node name="SpawnDirector" type="Node3D" parent="." unique_id=1096536363]
+script = ExtResource("2_ut1qd")
+max_active_enemies = 48
+spawn_check_interval = 0.22
+spawn_batch_size = 7
+initial_wave_count = 16
+min_spawn_dist = 13.0
+max_spawn_dist = 48.0
+
+[node name="Props" type="Node3D" parent="." unique_id=1505268895]
+
+[node name="Enemies" type="Node3D" parent="." unique_id=205589172]
+
+[node name="Pickups" type="Node3D" parent="." unique_id=1153969911]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=633442737 instance=ExtResource("3_c3jer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+collision_mask = 18
+script = ExtResource("4_fl01k")

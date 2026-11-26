@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/environments/3_city/models/road_segment_mesh.tres" id="1_eirck"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6wkv"]
+size = Vector3(4.04, 0.2, 4)
+
+[node name="RoadSegment" type="StaticBody3D" unique_id=411056595]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=957333980]
+mesh = ExtResource("1_eirck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1169457431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_u6wkv")

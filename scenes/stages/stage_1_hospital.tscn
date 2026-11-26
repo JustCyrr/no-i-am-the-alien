@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dotapqk0qbn16"]
+
+[ext_resource type="Script" uid="uid://f32v631s3oiv" path="res://scripts/infinite_world_manager.gd" id="1_8qh5v"]
+[ext_resource type="Script" uid="uid://b17g7i5468n43" path="res://scripts/infinite_spawn_director.gd" id="2_e0bpc"]
+[ext_resource type="PackedScene" uid="uid://cofealomsjecy" path="res://scenes/player.tscn" id="3_sgj0f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ef8h"]
+sky_top_color = Color(0.03, 0.08, 0.1, 1)
+sky_horizon_color = Color(0.05, 0.12, 0.14, 1)
+ground_bottom_color = Color(0.0165, 0.044, 0.055000003, 1)
+ground_horizon_color = Color(0.0375, 0.089999996, 0.105000004, 1)
+
+[sub_resource type="Sky" id="Sky_7kr3a"]
+sky_material = SubResource("ProceduralSkyMaterial_4ef8h")
+
+[sub_resource type="Environment" id="Environment_ax01g"]
+background_mode = 2
+sky = SubResource("Sky_7kr3a")
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.78, 0.78, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 3
+glow_enabled = true
+glow_intensity = 0.48
+glow_bloom = 0.14
+glow_hdr_threshold = 0.95
+fog_enabled = true
+fog_light_color = Color(0.047, 0.114, 0.133, 1)
+fog_density = 0.02
+
+[node name="Stage1Hospital" type="Node3D" unique_id=393745860]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1478765611]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=2040966222]
+environment = SubResource("Environment_ax01g")
+
+[node name="SunLight" type="DirectionalLight3D" parent="Environment" unique_id=324975986]
+transform = Transform3D(0.81915206, 0.41259637, -0.3984397, 0, 0.6946584, 0.7193398, 0.57357645, -0.58924866, 0.5690309, 0, 0, 0)
+light_color = Color(0.78, 0.96, 0.94, 1)
+light_energy = 0.6
+directional_shadow_max_distance = 65.0
+
+[node name="InfiniteWorld" type="Node3D" parent="." unique_id=1788452197]
+script = ExtResource("1_8qh5v")
+world_seed = 1001
+
+[node name="SpawnDirector" type="Node3D" parent="." unique_id=38460837]
+script = ExtResource("2_e0bpc")
+max_spawn_dist = 34.0
+
+[node name="Props" type="Node3D" parent="." unique_id=774064785]
+
+[node name="Enemies" type="Node3D" parent="." unique_id=2143078577]
+
+[node name="Pickups" type="Node3D" parent="." unique_id=822284587]
+
+[node name="Player" parent="." unique_id=633442737 instance=ExtResource("3_sgj0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)

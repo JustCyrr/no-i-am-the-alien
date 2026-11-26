@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/v2/bio_fluid_glass.gdshader" id="1_fla8g"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_bio_glass_albedo.png" id="2_kqtel"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_bio_glass_normal.png" id="3_buese"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fla8g")
+shader_parameter/bio_albedo_tex = ExtResource("2_kqtel")
+shader_parameter/bio_normal_tex = ExtResource("3_buese")
+shader_parameter/fluid_core_color = null
+shader_parameter/fluid_rim_color = null
+shader_parameter/glass_opacity = 0.72
+shader_parameter/fresnel_power = null
+shader_parameter/fresnel_strength = null
+shader_parameter/bubble_rise_speed = null
+shader_parameter/wave_wobble = null
+shader_parameter/pixel_grid = null
+shader_parameter/emission_energy = 2.0
+shader_parameter/pulse_speed = null

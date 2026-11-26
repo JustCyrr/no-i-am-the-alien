@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/environments/1_hospital_interior/models/floor_tile_mesh.tres" id="1_4om7g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjebi"]
+size = Vector3(4, 0.22, 4)
+
+[node name="FloorTile" type="StaticBody3D" unique_id=678772575]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=555783540]
+mesh = ExtResource("1_4om7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1197778820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
+shape = SubResource("BoxShape3D_qjebi")

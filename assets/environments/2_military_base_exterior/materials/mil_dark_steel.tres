@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://deneqg3ebbqx1"]
+
+[ext_resource type="Shader" uid="uid://dv0g0cti1my4" path="res://shaders/v2/ps2_retro_surface.gdshader" id="1_is7tr"]
+[ext_resource type="Texture2D" uid="uid://jwkb38h3jkej" path="res://assets/environments/2_military_base_exterior/textures/mil_dark_steel_albedo.png" id="2_61nt7"]
+[ext_resource type="Texture2D" uid="uid://q0ihs5cw13qy" path="res://assets/environments/2_military_base_exterior/textures/mil_dark_steel_normal.png" id="3_qhul4"]
+[ext_resource type="Texture2D" uid="uid://bedajjnikuh8w" path="res://assets/environments/2_military_base_exterior/textures/mil_dark_steel_orm.png" id="4_773hd"]
+
+[sub_resource type="Image" id="Image_is7tr"]
+data = {
+"data": PackedByteArray(0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_g8kfu"]
+image = SubResource("Image_is7tr")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_is7tr")
+shader_parameter/albedo_tex = ExtResource("2_61nt7")
+shader_parameter/normal_tex = ExtResource("3_qhul4")
+shader_parameter/orm_tex = ExtResource("4_773hd")
+shader_parameter/emissive_tex = SubResource("ImageTexture_g8kfu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo_tint = Color(1, 1, 1, 1)
+shader_parameter/normal_depth = 1.15
+shader_parameter/ao_strength = 0.85
+shader_parameter/roughness_mult = 1.0
+shader_parameter/metallic_mult = 1.0
+shader_parameter/emission_energy = 0.0
+shader_parameter/emission_pulse_amp = 0.06
+shader_parameter/emission_pulse_speed = 2.0
+shader_parameter/ground_y = 0.0
+shader_parameter/ground_ao_height = 0.45
+shader_parameter/ground_ao_strength = 0.35
+shader_parameter/ground_grime_tint = Color(0.16, 0.11, 0.08, 1)
+shader_parameter/light_steps = 10.0
+shader_parameter/dither_strength = 0.38
+shader_parameter/rim_strength = 0.18
+shader_parameter/rim_color = Color(0.95, 0.56, 0.3, 1)
+shader_parameter/vertex_snap_enable = false
+shader_parameter/snap_resolution = Vector2(640, 360)

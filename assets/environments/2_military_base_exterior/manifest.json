@@ -1,0 +1,143 @@
+{
+  "world": "2_military_base_exterior",
+  "version": "v2",
+  "aesthetic": "AA Retro PS1/PS2 Low-Poly PBR (NEAREST samplers + Normal/ORM/Emissive)",
+  "textures": [
+    "mil_bunker_armor",
+    "mil_crate_panel",
+    "mil_dark_steel",
+    "mil_ground_wasteland",
+    "mil_hazard_trim",
+    "mil_metal_deck",
+    "mil_plasma_drum"
+  ],
+  "models": [
+    {
+      "file": "ground_slab.glb",
+      "triangles": 92,
+      "surfaces": [
+        "mil_ground_wasteland",
+        "mil_metal_deck",
+        "mil_hazard_trim"
+      ],
+      "size_bytes": 115468,
+      "extents_m": [
+        4.0,
+        0.27,
+        4.0
+      ]
+    },
+    {
+      "file": "bunker_wall.glb",
+      "triangles": 204,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_bunker_armor",
+        "mil_hazard_trim"
+      ],
+      "size_bytes": 81016,
+      "extents_m": [
+        4.04,
+        3.27,
+        1.24
+      ]
+    },
+    {
+      "file": "bunker_building.glb",
+      "triangles": 428,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_bunker_armor",
+        "mil_hazard_trim",
+        "mil_metal_deck",
+        "mil_plasma_drum"
+      ],
+      "size_bytes": 136084,
+      "extents_m": [
+        6.2,
+        5.22,
+        5.54
+      ]
+    },
+    {
+      "file": "watchtower.glb",
+      "triangles": 1452,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_hazard_trim",
+        "mil_metal_deck",
+        "mil_bunker_armor",
+        "mil_plasma_drum"
+      ],
+      "size_bytes": 209808,
+      "extents_m": [
+        3.32,
+        7.03,
+        3.32
+      ]
+    },
+    {
+      "file": "radar_dish.glb",
+      "triangles": 816,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_bunker_armor",
+        "mil_hazard_trim",
+        "mil_metal_deck",
+        "mil_plasma_drum"
+      ],
+      "size_bytes": 163940,
+      "extents_m": [
+        2.48,
+        4.26,
+        2.39
+      ]
+    },
+    {
+      "file": "ammo_crate.glb",
+      "triangles": 516,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_crate_panel",
+        "mil_hazard_trim"
+      ],
+      "size_bytes": 96044,
+      "extents_m": [
+        1.5,
+        0.86,
+        0.9
+      ]
+    },
+    {
+      "file": "barricade.glb",
+      "triangles": 404,
+      "surfaces": [
+        "mil_dark_steel",
+        "mil_bunker_armor",
+        "mil_hazard_trim",
+        "mil_plasma_drum"
+      ],
+      "size_bytes": 110508,
+      "extents_m": [
+        2.64,
+        1.47,
+        1.01
+      ]
+    },
+    {
+      "file": "plasma_barrel.glb",
+      "triangles": 384,
+      "surfaces": [
+        "mil_plasma_drum",
+        "mil_dark_steel",
+        "mil_hazard_trim"
+      ],
+      "size_bytes": 83080,
+      "extents_m": [
+        0.79,
+        1.24,
+        0.79
+      ]
+    }
+  ]
+}

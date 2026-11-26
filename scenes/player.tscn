@@ -1,0 +1,487 @@
+[gd_scene format=3 uid="uid://cofealomsjecy"]
+
+[ext_resource type="Script" uid="uid://ddj3rg2okf5vs" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://byqyhoeajfclq" path="res://assets/hands/left_arm_idle.png" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://dfwhpx3h1nva8" path="res://scripts/left_arm.gd" id="3_fjrip"]
+[ext_resource type="Texture2D" uid="uid://byoiob3bwjukh" path="res://assets/hands/grapple/grapple_hand.png" id="4_pf23h"]
+[ext_resource type="Texture2D" uid="uid://dl0ygca7wlwn2" path="res://assets/hands/right_arm_idle.png" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://dva5pu8vkcxhw" path="res://scripts/right_arm.gd" id="5_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://bcr6wwm5xuv5" path="res://assets/hands/slide/slide_idle.png" id="6_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://c5csrejdtstwf" path="res://assets/hands/pistol/idle.png" id="7_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://c6p0apd0a485a" path="res://assets/ui/stamina_bar/stamina_bar_under.png" id="7_oprun"]
+[ext_resource type="Texture2D" uid="uid://diwt1x8ivnj0l" path="res://assets/hands/shotgun/idle.png" id="8_487ah"]
+[ext_resource type="Texture2D" uid="uid://ciyug1gnvl6wu" path="res://assets/ui/stamina_bar/stamina_bar_over.png" id="8_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://bff1cfee0e0q4" path="res://assets/ui/stamina_bar/stamina_bar_fill_orange.png" id="9_qfm1y"]
+[ext_resource type="AudioStream" uid="uid://ckfg3emnsjxfx" path="res://assets/audio/footstep_walk.wav" id="10_fulsm"]
+[ext_resource type="Texture2D" uid="uid://p0ur3fyucjui" path="res://assets/ui/health_skulls/skulls_3hp.png" id="10_qfm1y"]
+[ext_resource type="AudioStream" uid="uid://13klf4cglbnv" path="res://assets/audio/footstep_run.wav" id="11_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://tkt3kx3tn1b4" path="res://assets/hands/parry/frames/frame_00.png" id="11_l71n6"]
+[ext_resource type="AudioStream" uid="uid://cgitbavkyqc5x" path="res://assets/audio/slide_dirt.wav" id="12_60mlk"]
+[ext_resource type="Shader" uid="uid://y4kxvvuhqnnr" path="res://shaders/buff_vignette.gdshader" id="12_ujl30"]
+[ext_resource type="Texture2D" uid="uid://cl1uxmcmtn1aq" path="res://assets/ui/shield_icon/shield_active.png" id="13_31cv2"]
+[ext_resource type="AudioStream" uid="uid://bfc4efc5uhwar" path="res://assets/audio/punch_whoosh.wav" id="13_i4ail"]
+[ext_resource type="AudioStream" uid="uid://ctu0fxg3s51q8" path="res://assets/audio/punch_hit.wav" id="14_a38lo"]
+[ext_resource type="AudioStream" uid="uid://2vhuh2aokhnn" path="res://assets/audio/player_hurt.wav" id="16_fulsm"]
+[ext_resource type="AudioStream" uid="uid://c84f6f7hwneex" path="res://assets/audio/player_death.wav" id="17_4r5pv"]
+[ext_resource type="AudioStream" uid="uid://ce2n0d2oicvuo" path="res://assets/audio/shield_block.wav" id="18_fulsm"]
+[ext_resource type="AudioStream" uid="uid://cl0ojpnw42vw2" path="res://assets/audio/parry_swing_whoosh.wav" id="20_ke2ow"]
+[ext_resource type="AudioStream" uid="uid://sr4b1c3u3r0m" path="res://assets/audio/parry_clang_1.wav" id="21_ujl30"]
+[ext_resource type="AudioStream" uid="uid://bbo6hjypqowb1" path="res://assets/audio/parry_ring_chime.wav" id="22_31cv2"]
+[ext_resource type="AudioStream" uid="uid://dpxsprccs834g" path="res://assets/audio/parry_energy_deflect.wav" id="23_pf23h"]
+[ext_resource type="Shader" uid="uid://coogmet5kwml7" path="res://shaders/parry_impact_frame.gdshader" id="24_dt7fs"]
+[ext_resource type="Script" uid="uid://07gavsls64av" path="res://scripts/grapple_controller.gd" id="28_dt7fs"]
+[ext_resource type="AudioStream" uid="uid://bmcwm1tttehiu" path="res://assets/audio/shield_hit_or_break.wav" id="29_md1ol"]
+[ext_resource type="Script" uid="uid://xhfr187da3y8" path="res://scripts/right_weapon_controller.gd" id="32_bj30b"]
+[ext_resource type="Script" uid="uid://b8sra6cjhmtfj" path="res://scripts/pause_menu.gd" id="33_487ah"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4r1p"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf23h"]
+shader = ExtResource("12_ujl30")
+shader_parameter/heal_intensity = 0.0
+shader_parameter/speed_intensity = 0.0
+shader_parameter/shield_intensity = 0.0
+shader_parameter/shield_flash = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqfne"]
+shader = ExtResource("24_dt7fs")
+shader_parameter/intensity = 0.0
+shader_parameter/invert_phase = 0.0
+shader_parameter/seed = 1.0
+
+[node name="player" type="CharacterBody3D" unique_id=633442737]
+collision_mask = 18
+script = ExtResource("1_qlg0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1808559938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_y4r1p")
+
+[node name="Head" type="Node3D" parent="." unique_id=1754626145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=2096336282]
+current = true
+
+[node name="PunchRay" type="RayCast3D" parent="Head/Camera3D" unique_id=1880755362]
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 18
+
+[node name="HandsLayer" type="CanvasLayer" parent="." unique_id=801145681]
+layer = 10
+
+[node name="HUDRoot" type="Control" parent="HandsLayer" unique_id=5520168]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="ColorRect" parent="HandsLayer/HUDRoot" unique_id=1207726789]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.85)
+
+[node name="LeftArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=495328106]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -444.0
+offset_right = 420.0
+offset_bottom = 76.0
+mouse_filter = 2
+
+[node name="LeftArm" type="TextureRect" parent="HandsLayer/HUDRoot/LeftArmAnchor" unique_id=1846637344]
+texture_filter = 1
+layout_mode = 0
+offset_right = 468.0
+offset_bottom = 520.0
+mouse_filter = 2
+texture = ExtResource("2_qlg0r")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_fjrip")
+
+[node name="GrappleArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=1280357333]
+visible = false
+anchors_preset = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -348.0
+offset_right = 403.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="GrappleArm" type="TextureRect" parent="HandsLayer/HUDRoot/GrappleArmAnchor" unique_id=1050033417]
+texture_filter = 1
+layout_mode = 0
+offset_right = 419.0
+offset_bottom = 372.0
+mouse_filter = 2
+texture = ExtResource("4_pf23h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=313209248]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -476.0
+offset_top = -444.0
+offset_right = 56.0
+offset_bottom = 76.0
+mouse_filter = 2
+
+[node name="RightArm" type="TextureRect" parent="HandsLayer/HUDRoot/RightArmAnchor" unique_id=962831374]
+texture_filter = 1
+layout_mode = 0
+offset_right = 532.0
+offset_bottom = 520.0
+mouse_filter = 2
+texture = ExtResource("4_tuyoq")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("5_ur7pv")
+
+[node name="PistolArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=789895164]
+visible = false
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -452.0
+offset_top = -335.0
+offset_right = 16.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="PistolArm" type="TextureRect" parent="HandsLayer/HUDRoot/PistolArmAnchor" unique_id=58037982]
+texture_filter = 1
+layout_mode = 0
+offset_right = 468.0
+offset_bottom = 359.0
+mouse_filter = 2
+texture = ExtResource("7_gl8cc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShotgunArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=772403932]
+visible = false
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -494.0
+offset_top = -326.0
+offset_right = 16.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="ShotgunArm" type="TextureRect" parent="HandsLayer/HUDRoot/ShotgunArmAnchor" unique_id=1471344567]
+texture_filter = 1
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 350.0
+mouse_filter = 2
+texture = ExtResource("8_487ah")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlideArmAnchor" type="Control" parent="HandsLayer/HUDRoot" unique_id=707316135]
+visible = false
+anchors_preset = 0
+anchor_top = 1.0
+anchor_right = 0.86
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -350.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="SlideArm" type="TextureRect" parent="HandsLayer/HUDRoot/SlideArmAnchor" unique_id=1091323634]
+texture_filter = 1
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("6_f1ej7")
+expand_mode = 1
+
+[node name="DamageFlash" type="ColorRect" parent="HandsLayer/HUDRoot" unique_id=1014412453]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.05, 0.05, 0)
+
+[node name="StaminaBar" type="TextureProgressBar" parent="HandsLayer/HUDRoot" unique_id=1746245621]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -76.0
+offset_right = 160.0
+offset_bottom = -24.0
+mouse_filter = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_oprun")
+texture_over = ExtResource("8_a8ls1")
+texture_progress = ExtResource("9_qfm1y")
+
+[node name="HealthSkulls" type="TextureRect" parent="HandsLayer/HUDRoot" unique_id=1690166567]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -126.0
+offset_right = 79.0
+offset_bottom = -81.0
+mouse_filter = 2
+texture = ExtResource("10_qfm1y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DeathLabel" type="Label" parent="HandsLayer/HUDRoot" unique_id=1030081971]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.45
+anchor_right = 0.5
+anchor_bottom = 0.45
+offset_left = -260.0
+offset_top = -30.0
+offset_right = 260.0
+offset_bottom = 30.0
+text = "YOU DIED - PRESS [R] TO RETRY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugLabel" type="Label" parent="HandsLayer/HUDRoot" unique_id=2094069857]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 460.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.96, 0.98, 0.92, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.95)
+theme_override_constants/outline_size = 5
+
+[node name="ParryArm" type="TextureRect" parent="HandsLayer/HUDRoot" unique_id=1095886714]
+visible = false
+texture_filter = 1
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("11_l71n6")
+expand_mode = 1
+
+[node name="BuffVignette" type="ColorRect" parent="HandsLayer/HUDRoot" unique_id=2077806967]
+material = SubResource("ShaderMaterial_pf23h")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ShieldHUD" type="Control" parent="HandsLayer/HUDRoot" unique_id=1250068922]
+visible = false
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -174.0
+offset_right = 80.0
+offset_bottom = -130.0
+mouse_filter = 2
+
+[node name="ShieldIcon" type="TextureRect" parent="HandsLayer/HUDRoot/ShieldHUD" unique_id=1505431512]
+texture_filter = 1
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
+texture = ExtResource("13_31cv2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShieldBarBG" type="ColorRect" parent="HandsLayer/HUDRoot/ShieldHUD" unique_id=1732487864]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 14.0
+offset_right = 158.0
+offset_bottom = 28.0
+mouse_filter = 2
+color = Color(0.05, 0.1, 0.18, 0.85)
+
+[node name="ShieldBarFill" type="ColorRect" parent="HandsLayer/HUDRoot/ShieldHUD" unique_id=702847189]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 26.0
+mouse_filter = 2
+color = Color(0.25, 0.82, 1, 1)
+
+[node name="WeaponSlotsHUD" type="Control" parent="HandsLayer/HUDRoot" unique_id=1858995042]
+visible = false
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 170.0
+mouse_filter = 2
+
+[node name="PistolSlot" type="TextureRect" parent="HandsLayer/HUDRoot/WeaponSlotsHUD" unique_id=2070605148]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 120.0
+offset_right = 240.0
+offset_bottom = 64.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PistolAmmo" type="Label" parent="HandsLayer/HUDRoot/WeaponSlotsHUD" unique_id=1117676125]
+visible = false
+layout_mode = 0
+offset_top = 18.0
+offset_right = 112.0
+offset_bottom = 48.0
+text = "7 / 7"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ShotgunSlot" type="TextureRect" parent="HandsLayer/HUDRoot/WeaponSlotsHUD" unique_id=741839876]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 74.0
+offset_right = 240.0
+offset_bottom = 138.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShotgunAmmo" type="Label" parent="HandsLayer/HUDRoot/WeaponSlotsHUD" unique_id=1824320778]
+visible = false
+layout_mode = 0
+offset_top = 92.0
+offset_right = 72.0
+offset_bottom = 122.0
+text = "2 / 2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CeilingCheck" type="RayCast3D" parent="." unique_id=46286193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+target_position = Vector3(0, 0.95, 0)
+collision_mask = 16
+
+[node name="Audio" type="Node" parent="." unique_id=1658198458]
+
+[node name="WalkStepPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=372407468]
+stream = ExtResource("10_fulsm")
+volume_db = -4.0
+
+[node name="RunStepPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=252411087]
+stream = ExtResource("11_4r5pv")
+volume_db = -3.0
+
+[node name="SlidePlayer" type="AudioStreamPlayer" parent="Audio" unique_id=482651189]
+stream = ExtResource("12_60mlk")
+volume_db = -2.0
+
+[node name="PunchWhooshPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=68804893]
+stream = ExtResource("13_i4ail")
+volume_db = -3.0
+
+[node name="PunchHitPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=492389670]
+stream = ExtResource("14_a38lo")
+volume_db = -1.0
+
+[node name="PlayerHurtPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1768699705]
+stream = ExtResource("16_fulsm")
+
+[node name="PlayerDeathPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=952497280]
+stream = ExtResource("17_4r5pv")
+volume_db = 1.0
+
+[node name="ParryPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1956633142]
+stream = ExtResource("18_fulsm")
+volume_db = 1.0
+
+[node name="ParrySwingPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1197276787]
+process_mode = 3
+stream = ExtResource("20_ke2ow")
+volume_db = -1.0
+
+[node name="ParryClangPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1264882532]
+process_mode = 3
+stream = ExtResource("21_ujl30")
+volume_db = 2.0
+
+[node name="ParryChimePlayer" type="AudioStreamPlayer" parent="Audio" unique_id=69044937]
+process_mode = 3
+stream = ExtResource("22_31cv2")
+volume_db = 1.0
+
+[node name="ParryEnergyPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1068002971]
+process_mode = 3
+stream = ExtResource("23_pf23h")
+volume_db = 1.0
+
+[node name="ShieldBlockPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1258263741]
+stream = ExtResource("29_md1ol")
+
+[node name="ImpactLayer" type="CanvasLayer" parent="." unique_id=1644350079]
+layer = 20
+
+[node name="ImpactFrameRect" type="ColorRect" parent="ImpactLayer" unique_id=778422946]
+visible = false
+material = SubResource("ShaderMaterial_wqfne")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="GrappleController" type="Node3D" parent="." unique_id=740639996]
+script = ExtResource("28_dt7fs")
+
+[node name="RightWeaponController" type="Node" parent="." unique_id=1854871078]
+script = ExtResource("32_bj30b")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1203673958]
+process_mode = 3
+layer = 30
+script = ExtResource("33_487ah")

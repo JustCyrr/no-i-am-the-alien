@@ -1,0 +1,22 @@
+{
+  "side": "right",
+  "frame_count": 10,
+  "recommended_fps": 18,
+  "hframes": 10,
+  "vframes": 1,
+  "frame_width": 144,
+  "frame_height": 144,
+  "timestamps_sec": [
+    6.15,
+    6.24,
+    6.32,
+    6.45,
+    6.57,
+    6.7,
+    6.82,
+    7.28,
+    7.4,
+    7.53
+  ],
+  "idle_file": "right_arm_idle.png"
+}

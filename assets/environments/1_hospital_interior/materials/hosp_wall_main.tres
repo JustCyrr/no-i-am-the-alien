@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/v2/ps2_retro_surface.gdshader" id="1_j001v"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_wall_main_albedo.png" id="2_qydow"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_wall_main_emissive.png" id="3_mdlf0"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_wall_main_normal.png" id="4_2svux"]
+[ext_resource type="Texture2D" path="res://assets/environments/1_hospital_interior/textures/hosp_wall_main_orm.png" id="5_ir6gk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j001v")
+shader_parameter/albedo_tex = ExtResource("2_qydow")
+shader_parameter/normal_tex = ExtResource("4_2svux")
+shader_parameter/orm_tex = ExtResource("5_ir6gk")
+shader_parameter/emissive_tex = ExtResource("3_mdlf0")
+shader_parameter/uv_scale = null
+shader_parameter/uv_offset = null
+shader_parameter/albedo_tint = null
+shader_parameter/normal_depth = null
+shader_parameter/ao_strength = null
+shader_parameter/roughness_mult = null
+shader_parameter/metallic_mult = null
+shader_parameter/emission_energy = 2.2
+shader_parameter/emission_pulse_amp = null
+shader_parameter/emission_pulse_speed = null
+shader_parameter/ground_y = null
+shader_parameter/ground_ao_height = null
+shader_parameter/ground_ao_strength = null
+shader_parameter/ground_grime_tint = Color(0.06, 0.14, 0.13, 1)
+shader_parameter/light_steps = 10.0
+shader_parameter/dither_strength = 0.38
+shader_parameter/rim_strength = null
+shader_parameter/rim_color = Color(0.32, 0.92, 0.8, 1)
+shader_parameter/vertex_snap_enable = false
+shader_parameter/snap_resolution = null

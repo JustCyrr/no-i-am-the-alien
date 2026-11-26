@@ -1,0 +1,140 @@
+{
+  "world": "3_city",
+  "version": "v2",
+  "aesthetic": "AA Retro PS1/PS2 Low-Poly PBR (NEAREST samplers + Normal/ORM/Emissive)",
+  "textures": [
+    "city_house_facade",
+    "city_neon_sign",
+    "city_road_basalt",
+    "city_roof_mech",
+    "city_sidewalk_hex",
+    "city_skyscraper_facade",
+    "city_wall_neon"
+  ],
+  "models": [
+    {
+      "file": "road_segment.glb",
+      "triangles": 108,
+      "surfaces": [
+        "city_road_basalt",
+        "city_sidewalk_hex",
+        "city_wall_neon",
+        "city_roof_mech"
+      ],
+      "size_bytes": 111276,
+      "extents_m": [
+        4.04,
+        0.2,
+        4.0
+      ]
+    },
+    {
+      "file": "sidewalk_slab.glb",
+      "triangles": 132,
+      "surfaces": [
+        "city_sidewalk_hex",
+        "city_roof_mech",
+        "city_wall_neon"
+      ],
+      "size_bytes": 72292,
+      "extents_m": [
+        4.0,
+        0.21,
+        4.0
+      ]
+    },
+    {
+      "file": "city_wall.glb",
+      "triangles": 192,
+      "surfaces": [
+        "city_roof_mech",
+        "city_wall_neon"
+      ],
+      "size_bytes": 51948,
+      "extents_m": [
+        4.0,
+        2.86,
+        0.77
+      ]
+    },
+    {
+      "file": "alien_house.glb",
+      "triangles": 472,
+      "surfaces": [
+        "city_roof_mech",
+        "city_sidewalk_hex",
+        "city_house_facade",
+        "city_wall_neon"
+      ],
+      "size_bytes": 115984,
+      "extents_m": [
+        4.92,
+        4.59,
+        5.1
+      ]
+    },
+    {
+      "file": "alien_tower_building.glb",
+      "triangles": 528,
+      "surfaces": [
+        "city_roof_mech",
+        "city_wall_neon",
+        "city_skyscraper_facade",
+        "city_neon_sign"
+      ],
+      "size_bytes": 93252,
+      "extents_m": [
+        5.8,
+        13.89,
+        6.53
+      ]
+    },
+    {
+      "file": "alien_shop_kiosk.glb",
+      "triangles": 384,
+      "surfaces": [
+        "city_sidewalk_hex",
+        "city_wall_neon",
+        "city_roof_mech",
+        "city_skyscraper_facade",
+        "city_neon_sign"
+      ],
+      "size_bytes": 106808,
+      "extents_m": [
+        3.54,
+        3.65,
+        3.15
+      ]
+    },
+    {
+      "file": "street_lamp.glb",
+      "triangles": 312,
+      "surfaces": [
+        "city_roof_mech",
+        "city_wall_neon"
+      ],
+      "size_bytes": 60612,
+      "extents_m": [
+        2.07,
+        4.84,
+        0.67
+      ]
+    },
+    {
+      "file": "holo_pillar.glb",
+      "triangles": 488,
+      "surfaces": [
+        "city_sidewalk_hex",
+        "city_roof_mech",
+        "city_wall_neon",
+        "city_neon_sign"
+      ],
+      "size_bytes": 104580,
+      "extents_m": [
+        1.7,
+        4.8,
+        1.33
+      ]
+    }
+  ]
+}

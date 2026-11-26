@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://shaders/v2/ps2_retro_surface.gdshader" id="1_ntj20"]
+[ext_resource type="Texture2D" path="res://assets/environments/2_military_base_exterior/textures/mil_bunker_armor_albedo.png" id="2_fksyc"]
+[ext_resource type="Texture2D" path="res://assets/environments/2_military_base_exterior/textures/mil_bunker_armor_emissive.png" id="3_nsc7n"]
+[ext_resource type="Texture2D" path="res://assets/environments/2_military_base_exterior/textures/mil_bunker_armor_normal.png" id="4_05sfw"]
+[ext_resource type="Texture2D" path="res://assets/environments/2_military_base_exterior/textures/mil_bunker_armor_orm.png" id="5_1mdjd"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ntj20")
+shader_parameter/albedo_tex = ExtResource("2_fksyc")
+shader_parameter/normal_tex = ExtResource("4_05sfw")
+shader_parameter/orm_tex = ExtResource("5_1mdjd")
+shader_parameter/emissive_tex = ExtResource("3_nsc7n")
+shader_parameter/uv_scale = null
+shader_parameter/uv_offset = null
+shader_parameter/albedo_tint = null
+shader_parameter/normal_depth = null
+shader_parameter/ao_strength = null
+shader_parameter/roughness_mult = null
+shader_parameter/metallic_mult = null
+shader_parameter/emission_energy = 2.2
+shader_parameter/emission_pulse_amp = null
+shader_parameter/emission_pulse_speed = null
+shader_parameter/ground_y = null
+shader_parameter/ground_ao_height = null
+shader_parameter/ground_ao_strength = null
+shader_parameter/ground_grime_tint = Color(0.16, 0.11, 0.08, 1)
+shader_parameter/light_steps = 10.0
+shader_parameter/dither_strength = 0.38
+shader_parameter/rim_strength = null
+shader_parameter/rim_color = Color(0.95, 0.56, 0.3, 1)
+shader_parameter/vertex_snap_enable = false
+shader_parameter/snap_resolution = null

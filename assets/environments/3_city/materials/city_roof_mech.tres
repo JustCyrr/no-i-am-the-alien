@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c7fw15au3xkfv"]
+
+[ext_resource type="Shader" uid="uid://dv0g0cti1my4" path="res://shaders/v2/ps2_retro_surface.gdshader" id="1_trfdh"]
+[ext_resource type="Texture2D" uid="uid://k6npqy24qf4l" path="res://assets/environments/3_city/textures/city_roof_mech_albedo.png" id="2_wl63s"]
+[ext_resource type="Texture2D" uid="uid://d1qre4if05h31" path="res://assets/environments/3_city/textures/city_roof_mech_normal.png" id="3_hc5ox"]
+[ext_resource type="Texture2D" uid="uid://co1gsqqye8r5f" path="res://assets/environments/3_city/textures/city_roof_mech_orm.png" id="4_1lwhv"]
+
+[sub_resource type="Image" id="Image_trfdh"]
+data = {
+"data": PackedByteArray(0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255),
+"format": "RGBA8",
+"height": 2,
+"mipmaps": false,
+"width": 2
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_g8kfu"]
+image = SubResource("Image_trfdh")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_trfdh")
+shader_parameter/albedo_tex = ExtResource("2_wl63s")
+shader_parameter/normal_tex = ExtResource("3_hc5ox")
+shader_parameter/orm_tex = ExtResource("4_1lwhv")
+shader_parameter/emissive_tex = SubResource("ImageTexture_g8kfu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo_tint = Color(1, 1, 1, 1)
+shader_parameter/normal_depth = 1.15
+shader_parameter/ao_strength = 0.85
+shader_parameter/roughness_mult = 1.0
+shader_parameter/metallic_mult = 1.0
+shader_parameter/emission_energy = 0.0
+shader_parameter/emission_pulse_amp = 0.06
+shader_parameter/emission_pulse_speed = 2.0
+shader_parameter/ground_y = 0.0
+shader_parameter/ground_ao_height = 0.45
+shader_parameter/ground_ao_strength = 0.35
+shader_parameter/ground_grime_tint = Color(0.07, 0.06, 0.14, 1)
+shader_parameter/light_steps = 10.0
+shader_parameter/dither_strength = 0.38
+shader_parameter/rim_strength = 0.18
+shader_parameter/rim_color = Color(0.58, 0.42, 1, 1)
+shader_parameter/vertex_snap_enable = false
+shader_parameter/snap_resolution = Vector2(640, 360)
